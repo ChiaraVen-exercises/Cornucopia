@@ -11,8 +11,8 @@
 	<groupId>com.chiara.exercises</groupId>
 	<artifactId>cornucopia</artifactId>
 	<version>1.0-SNAPSHOT</version>
-	<name>cornucopia</name>
-	<description>---</description>
+	<name>Cornucopia</name>
+	<description>Backend app for the website Cornucopia, which connects food businesses, charities and people in need to redistribute food leftovers and alleviate hunger</description>
 	<properties>
 		<java.version>17</java.version>
 		<kotlin.version>1.8.22</kotlin.version>
