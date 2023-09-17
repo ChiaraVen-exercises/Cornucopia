@@ -43,9 +43,9 @@ TO IMPLEMENT
 
 ---Terms and conditions---
 
-- I won't sell the food, I will just consume it or give it to someone in need
+- I won't sell the food donated to me, I will just consume it or give it to someone in need.
 
-- (Clients) I will execute rigorous checks to ensure that the food I donate is safe for consumption and not deteriorated in an unacceptable way
+- (Clients) I will execute rigorous checks to ensure that the food I donate is safe for consumption and not deteriorated in an unacceptable way.
 
 
 If something does not work, restore the original order of dependencies in the pom!
