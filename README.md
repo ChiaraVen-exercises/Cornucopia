@@ -27,12 +27,7 @@ TO IMPLEMENT
 
 1) admins
 
-2) clients:
-
-- nonprofit
-
-- private citizens
-
+2) recipients (nonprofits or private citizens)
 
 3) food donors
 
@@ -48,8 +43,9 @@ TO IMPLEMENT
 
 ---Terms and conditions---
 
--I won't sell the food, I will just consume it or give it to someone in need
--(Clients) I will execute rigorous checks to ensure that the food I donate is safe for consumption and not deteriorated in an unacceptable way
+- I won't sell the food, I will just consume it or give it to someone in need
+
+- (Clients) I will execute rigorous checks to ensure that the food I donate is safe for consumption and not deteriorated in an unacceptable way
 
 
 If something does not work, restore the original order of dependencies in the pom!
