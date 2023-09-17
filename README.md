@@ -23,7 +23,7 @@ TO IMPLEMENT
 
 ---Accounts---
 
-(crypted passwords!!)
+(encrypted passwords!!)
 
 1) admins
 
