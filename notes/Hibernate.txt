@@ -1,0 +1,21 @@
+-- Hibernate --
+
+Hibernate is a Java framework which lets you save (persist) Java objects in a database.
+It greatly reduces the amount of JDBC (Java DataBase Connectivity) code you'd have to write without it,
+in order to work with a database.
+It works thanks to ORM, aka Object-Relational Mapping: for every Java class you wish to persist, you have to
+define how that class is mapped to a particular database object.
+Classes become entities, fields become attributes...
+The mapping can be achieved by XML file, by Java annotation or by configuration file.
+
+Hibernate is only one of those who provide an implementation of Spring JPA (its implementation is
+the default one provided by SpringBoot).
+
+It uses JDBC to communicate with the database.
+
+
+-- Spring JPA --
+
+Spring JPA (aka Spring Jakarta Persistence API, previously Java Persistence API) is the standard API for ORM.
+It just defines a series of interfaces for ORM, and requires its implementations to be usable;
+Two of its implementations are provided by Hibernate and EclipseLink.
