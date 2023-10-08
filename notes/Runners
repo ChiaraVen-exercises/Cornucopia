@@ -1,0 +1,5 @@
+CommandLineRunner is a functional interface, that is to say an interface containing a single method to implement.
+Classes which implement CommandLineRunner can run snippets of code in their 'run' method, after
+all the Spring Boot beans have been loaded; many Runner classes can be created, and the order of
+their invocation can be decided with the @Order annotation.
+Runners are very useful for executing code before the app accepts traffic.

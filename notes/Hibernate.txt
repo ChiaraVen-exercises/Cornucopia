@@ -27,3 +27,8 @@ Main component for creating queries.
 From JPA.
 Automatically created as bean by your SpringBoot application, like DataSource;
 it can be injected into your classes (i.e. DAO)
+
+Spring Boot will automatically configure your data source with info taken...
+- from your pom (related dependencies: i.e. spring-boot-starter-data-jpa, mysql-connector-j)
+- from your application.properties file (or application.yaml; DB connection)
+For example, Spring will automatically detect your JDBC Driver class by the URL of your datasource.
