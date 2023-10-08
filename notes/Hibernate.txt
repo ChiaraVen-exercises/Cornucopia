@@ -19,3 +19,11 @@ It uses JDBC to communicate with the database.
 Spring JPA (aka Spring Jakarta Persistence API, previously Java Persistence API) is the standard API for ORM.
 It just defines a series of interfaces for ORM, and requires its implementations to be usable;
 Two of its implementations are provided by Hibernate and EclipseLink.
+
+
+--EntityManager--
+
+Main component for creating queries.
+From JPA.
+Automatically created as bean by your SpringBoot application, like DataSource;
+it can be injected into your classes (i.e. DAO)
