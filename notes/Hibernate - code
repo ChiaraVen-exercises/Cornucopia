@@ -1,0 +1,20 @@
+Entity classes:
+
+Annotated with @Entity and with @Table(name = "nome_tabella")
+Used by Hibernate for ORM (Object to Relational Mapping)
+Each entity corresponds to a table, as each of its fields corresponds to a column
+For each entity to work correctly, a constructor without arguments is necessary.
+You can add others to your leisure.
+
+For the fields, the @Column annotation is not necessary, if you use the same exact name for the field
+and the column; but it's better to avoid this approach, to avoid breaking changes in case of refactorings.
+Same applies to @Table.
+
+@Id: annotation for fields corresponding to a primary key column.
+Only fields of type String, Date, BigDecimal and BigInteger (besides Java primitives and their wrappers)
+can use this annotation.
+@GeneratedValue(strategy=generationType.IDENTITY) -> this will be generated and managed by the database,
+no need to worry about it for the app!
+There are three more options for the generation of the primary key, but if they don't satisfy your requirements,
+you can create your own method ;)
+Implement org.hibernate.id.IdentifierGenerator and its method Generate (return type = Serializable) to do so.
