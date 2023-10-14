@@ -70,21 +70,21 @@
 		<dependency>
 			<groupId>org.hibernate</groupId>
 			<artifactId>hibernate-core</artifactId>
-			<version>5.2.15.Final</version>
+			<version>6.2.13.Final</version>
 		</dependency>
 		<dependency>
 			<groupId>org.hibernate</groupId>
 			<artifactId>hibernate-testing</artifactId>
-			<version>5.2.15.Final</version>
+			<version>6.2.13.Final</version>
 			<scope>test</scope>
 		</dependency>
 		<!-- Adds an embedded database for testing -->
-		<dependency>
-			<groupId>com.h2database</groupId>
-			<artifactId>h2</artifactId>
-			<version>1.4.196</version>
-			<scope>test</scope>
-		</dependency>
+<!--		<dependency>-->
+<!--			<groupId>com.h2database</groupId>-->
+<!--			<artifactId>h2</artifactId>-->
+<!--			<version>1.4.196</version>-->
+<!--			<scope>test</scope>-->
+<!--		</dependency>-->
 	</dependencies>
 
 	<build>
@@ -114,25 +114,25 @@
 					</dependency>
 				</dependencies>
 			</plugin>
-			<!--Added this to automatically generate no args constructor for entities...-->
-			<plugin>
-				<artifactId>kotlin-maven-plugin</artifactId>
-				<groupId>org.jetbrains.kotlin</groupId>
-				<version>${kotlin.version}</version>
-				<configuration>
-					<compilerPlugins>
-						<plugin>spring</plugin>
-						<plugin>jpa</plugin>
-					</compilerPlugins>
-				</configuration>
-				<dependencies>
-					<dependency>
-						<groupId>org.jetbrains.kotlin</groupId>
-						<artifactId>kotlin-maven-noarg</artifactId>
-						<version>${kotlin.version}</version>
-					</dependency>
-				</dependencies>
-			</plugin>
+<!--			&lt;!&ndash;Added this to automatically generate no args constructor for entities...&ndash;&gt;-->
+<!--			<plugin>-->
+<!--				<artifactId>kotlin-maven-plugin</artifactId>-->
+<!--				<groupId>org.jetbrains.kotlin</groupId>-->
+<!--				<version>${kotlin.version}</version>-->
+<!--				<configuration>-->
+<!--					<compilerPlugins>-->
+<!--						<plugin>spring</plugin>-->
+<!--						<plugin>jpa</plugin>-->
+<!--					</compilerPlugins>-->
+<!--				</configuration>-->
+<!--				<dependencies>-->
+<!--					<dependency>-->
+<!--						<groupId>org.jetbrains.kotlin</groupId>-->
+<!--						<artifactId>kotlin-maven-noarg</artifactId>-->
+<!--						<version>${kotlin.version}</version>-->
+<!--					</dependency>-->
+<!--				</dependencies>-->
+<!--			</plugin>-->
 		</plugins>
 	</build>
 
