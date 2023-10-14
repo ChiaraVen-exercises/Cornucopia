@@ -1,0 +1,26 @@
+This dependency allows you to generate a no-args constructor for each class
+preceded by specific annotations (for example, ones which are necessary for
+Hibernate: @Entity, etc...*).
+It fixes an issue which would be otherwise be encountered while trying to construct entity classes:
+in Java, it is easy to create entities without having to declare default values for their
+fields. If non-nullability is needed, you can simply add "nullable = false" to the arguments of
+the annotation @Column, above the desired field.
+Also, the constructor is contained inside the body of the class.
+Creating the no-args constructor required for Hibernate inside the body of the class is easy and it does not
+cause conflicts, normally.
+In Kotlin, the primary constructor is in the header of the class, not in its body.
+Trying to declare the properties of an entity inside its body, you'll receive an error citing
+missing inizialitation; trying to declare them inside its primary constructor, in the header, will
+cause an error because of the lack of a no-args constructor, which cannot be remedied with
+a secondary no-args constructor (it cannot inherit from the all-args primary one without receiving
+default values for the arguments).
+So, the only way to simultaneously avoid issues with Hibernate and missing initialization seems to be
+giving default values, something which is not desirable for arguments where there is no default, and
+which is not feasible if you want to use immutability (you'll not be able to overwrite them).
+To solve this, kotlin-maven-noarg creates a no-arg constructor for those classes, one which will not
+need default values from the all-args (which can be kept to avoid errors related to missing
+initialization. There, you can place all your properties mapped to columns, corredated by their
+respective annotations!).
+
+
+* Not sure about this. I should investigate and clarify which annotations guarantee a free no-args constructor!
