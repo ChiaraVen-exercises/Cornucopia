@@ -19,11 +19,6 @@ class Ingredient(
     @Column(name = "name")
     var name: String,
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id")
-    var id: Long,
-
     @ManyToMany
     @JoinTable(
         name = "fooditems_ingredients",
@@ -43,5 +38,10 @@ class Ingredient(
     @JsonIgnoreProperties("ingredients")
     var foodItems: Set<FoodItem> = setOf()
 ) {
+
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id")
+    var id: Long? = null
 
 }

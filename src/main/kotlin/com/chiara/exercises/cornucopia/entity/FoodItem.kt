@@ -29,20 +29,19 @@ class FoodItem (
     @Column(name = "traceableCode")
     var traceableCode : Long,
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    @Column(name = "id")
-    var id : Long,
+//    @ManyToOne(fetch = FetchType.LAZY)
+//    @JoinColumn(name = "lot_id", referencedColumnName = "id")
+//    @JsonIgnoreProperties("food_items")
+//    var lotId : FoodLot,
 
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "lot_id", referencedColumnName = "id")
-    @JsonIgnoreProperties("food_items")
-    var lotId : FoodLot,
-
-    @ManyToMany(mappedBy = "food_items")
+    @ManyToMany(mappedBy = "foodItems")
     @JsonIgnoreProperties("food_items")
     var ingredients : Set<Ingredient> = setOf()
 ){
 
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @Column(name = "id")
+    var id : Long? = null
 
 }

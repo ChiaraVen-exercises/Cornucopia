@@ -15,21 +15,23 @@ class FoodLot (
     @Column(name = "content_description")
     var contentDescription : String,
 
-    @Column(name = "content_description")
+    @Column(name = "status")
     var status : String,
 
-    @OneToOne
-    @Column(name = "content_description")
-    var bookedBy : User,
+//    @OneToOne
+//    @Column(name = "content_description")
+//    var bookedBy : User,
+//
+//    @OneToOne
+//    @Column(name = "content_description")
+//    var donatedBy : User,
 
-    @OneToOne
-    @Column(name = "content_description")
-    var donatedBy : User,
+
+) {
 
     @Id
     @Column(name = "id")
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    var id : Long
-) {
+    var id : Long? = null
 
 }
