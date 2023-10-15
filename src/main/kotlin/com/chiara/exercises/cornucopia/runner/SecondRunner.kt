@@ -1,8 +1,6 @@
 package com.chiara.exercises.cornucopia.runner
 
 import com.chiara.exercises.cornucopia.dao.IngredientDAO
-import com.chiara.exercises.cornucopia.dao.IngredientDAOImpl
-import com.chiara.exercises.cornucopia.entity.Ingredient
 import jakarta.transaction.Transactional
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.boot.CommandLineRunner
