@@ -16,11 +16,16 @@ class IngredientServiceImpl : IngredientService {
     }
 
     override fun findIngredientById(id: Long): Ingredient {
-        TODO("Not yet implemented")
+        return repository.findById(id).get()
     }
 
     override fun findAllIngredients(): List<Ingredient> {
-        TODO("Not yet implemented")
+        val ingredientIterable = repository.findAll()
+        var ingredientList : List<Ingredient> = listOf()
+        for (el in ingredientIterable) {
+            ingredientList += el
+        }
+        return ingredientList
     }
 
     override fun saveIngredient(ingredient: Ingredient): Long {
