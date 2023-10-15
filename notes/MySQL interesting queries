@@ -1,0 +1,6 @@
+To set a new starting value for the auto-increment in a given table, use the following query:
+ALTER TABLE databaseName.tableName AUTO_INCREMENT = newChosenNumber
+
+To reset the autoincrement to 1, you can use this query (WHICH WILL ALSO REMOVE ALL OF YOUR DATA FROM
+THE SELECTED TABLE):
+TRUNCATE databaseName.tableName

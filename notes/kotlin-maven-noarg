@@ -22,5 +22,7 @@ need default values from the all-args (which can be kept to avoid errors related
 initialization. There, you can place all your properties mapped to columns, corredated by their
 respective annotations!).
 
+Unfortunately, since the noargs constructor is synthetic, it appears you can only call it with reflection...
+
 
 * Not sure about this. I should investigate and clarify which annotations guarantee a free no-args constructor!

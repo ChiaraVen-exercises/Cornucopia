@@ -4,6 +4,8 @@ import com.chiara.exercises.cornucopia.entity.Ingredient
 
 interface IngredientDAO {
 
-    fun save(ingredient : Ingredient)
+    fun save(ingredient : Ingredient) : Long?
+
+    fun findById (id : Long) : Ingredient
 
 }

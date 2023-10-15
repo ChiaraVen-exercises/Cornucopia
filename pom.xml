@@ -114,25 +114,25 @@
 					</dependency>
 				</dependencies>
 			</plugin>
-<!--			&lt;!&ndash;Added this to automatically generate no args constructor for entities...&ndash;&gt;-->
-<!--			<plugin>-->
-<!--				<artifactId>kotlin-maven-plugin</artifactId>-->
-<!--				<groupId>org.jetbrains.kotlin</groupId>-->
-<!--				<version>${kotlin.version}</version>-->
-<!--				<configuration>-->
-<!--					<compilerPlugins>-->
-<!--						<plugin>spring</plugin>-->
-<!--						<plugin>jpa</plugin>-->
-<!--					</compilerPlugins>-->
-<!--				</configuration>-->
-<!--				<dependencies>-->
-<!--					<dependency>-->
-<!--						<groupId>org.jetbrains.kotlin</groupId>-->
-<!--						<artifactId>kotlin-maven-noarg</artifactId>-->
-<!--						<version>${kotlin.version}</version>-->
-<!--					</dependency>-->
-<!--				</dependencies>-->
-<!--			</plugin>-->
+			<!--Added this to automatically generate no args constructor for entities...-->
+			<plugin>
+				<artifactId>kotlin-maven-plugin</artifactId>
+				<groupId>org.jetbrains.kotlin</groupId>
+				<version>${kotlin.version}</version>
+				<configuration>
+					<compilerPlugins>
+						<plugin>spring</plugin>
+						<plugin>jpa</plugin>
+					</compilerPlugins>
+				</configuration>
+				<dependencies>
+					<dependency>
+						<groupId>org.jetbrains.kotlin</groupId>
+						<artifactId>kotlin-maven-noarg</artifactId>
+						<version>${kotlin.version}</version>
+					</dependency>
+				</dependencies>
+			</plugin>
 		</plugins>
 	</build>
 

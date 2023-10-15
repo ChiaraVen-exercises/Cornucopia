@@ -1,21 +1,39 @@
 package com.chiara.exercises.cornucopia.dao
 
 import com.chiara.exercises.cornucopia.entity.Ingredient
+import jakarta.persistence.EntityManager
 import jakarta.transaction.Transactional
 import org.springframework.beans.factory.annotation.Autowired
-import org.springframework.stereotype.Component
 import org.springframework.stereotype.Repository
-import jakarta.persistence.EntityManager
 
 @Repository
-class IngredientDAOImpl(
+class IngredientDAOImpl (
     @Autowired
     val entityManager: EntityManager
-) : IngredientDAO  {
+) : IngredientDAO {
 
     @Transactional
-    override fun save(ingredient: Ingredient) {
+    override fun save(ingredient: Ingredient) : Long? {
         entityManager.persist(ingredient)
+        var ingredientId = ingredient.id
+        println(ingredientId)
+        return ingredientId
     }
+
+    @Transactional
+    override fun findById (id : Long) : Ingredient {
+        return entityManager.find(Ingredient::class.java, id)
+    }
+
+    //    fun saveIngredients(){
+//
+//        println("Searching for Tsatziki...")
+//        var ingredient = Ingredient("Tsatziki")
+//        var ingry2 = Ingredient("Ceci")
+//        ingredientDAO.save(ingredient)
+//        ingredientDAO.save(ingry2)
+//        println("Saved, it seems...")
+//    }
+
 }
 
