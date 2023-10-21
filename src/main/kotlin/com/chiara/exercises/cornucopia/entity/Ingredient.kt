@@ -36,7 +36,7 @@ class Ingredient(
         ]
     )
     @JsonIgnoreProperties("ingredients")
-    var foodItems: Set<FoodItem> = setOf()
+    var foodItems: Set<FoodItem> = mutableSetOf()
 ) {
 
     @Id

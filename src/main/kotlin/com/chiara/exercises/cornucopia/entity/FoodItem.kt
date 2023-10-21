@@ -36,7 +36,7 @@ class FoodItem (
 
     @ManyToMany(mappedBy = "foodItems")
     @JsonIgnoreProperties("food_items")
-    var ingredients : Set<Ingredient> = setOf()
+    var ingredients : Set<Ingredient> = mutableSetOf()
 ){
 
     @Id
