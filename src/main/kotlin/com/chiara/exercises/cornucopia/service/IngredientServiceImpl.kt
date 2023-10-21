@@ -2,6 +2,7 @@ package com.chiara.exercises.cornucopia.service
 
 import com.chiara.exercises.cornucopia.entity.Ingredient
 import com.chiara.exercises.cornucopia.repository.IngredientRepository
+import jakarta.transaction.Transactional
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.stereotype.Service
 
@@ -28,10 +29,12 @@ class IngredientServiceImpl : IngredientService {
         return ingredientList
     }
 
+    @Transactional
     override fun saveIngredient(ingredient: Ingredient): Long? {
         return repository.save(ingredient).id
     }
 
+    @Transactional
     override fun updateIngredientById(id: Long, ingredient: Ingredient): Ingredient {
         val updatedIngredient = repository.findById(id).get()
             updatedIngredient.name = ingredient.name
@@ -40,12 +43,14 @@ class IngredientServiceImpl : IngredientService {
         return updatedIngredient
     }
 
+    @Transactional
     override fun deleteIngredientById(id: Long): Ingredient {
         val ingredient = repository.findById(id).get()
         repository.deleteById(id)
         return ingredient
     }
 
+    @Transactional
     override fun findIngredientByName(name: String): Ingredient {
         TODO("Not yet implemented")
     }

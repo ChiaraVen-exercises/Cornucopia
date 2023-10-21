@@ -3,3 +3,6 @@ Classes which implement CommandLineRunner can run snippets of code in their 'run
 all the Spring Boot beans have been loaded; many Runner classes can be created, and the order of
 their invocation can be decided with the @Order annotation.
 Runners are very useful for executing code before the app accepts traffic.
+
+If the code inserted inside the runner does not get executed (for example, if it throws an exception,
+as in the case of a failed update to a database object), the application does not start.
