@@ -28,16 +28,22 @@ class IngredientServiceImpl : IngredientService {
         return ingredientList
     }
 
-    override fun saveIngredient(ingredient: Ingredient): Long {
-        TODO("Not yet implemented")
+    override fun saveIngredient(ingredient: Ingredient): Long? {
+        return repository.save(ingredient).id
     }
 
     override fun updateIngredientById(id: Long, ingredient: Ingredient): Ingredient {
-        TODO("Not yet implemented")
+        val updatedIngredient = repository.findById(id).get()
+            updatedIngredient.name = ingredient.name
+            updatedIngredient.foodItems = ingredient.foodItems
+            repository.save(updatedIngredient)
+        return updatedIngredient
     }
 
     override fun deleteIngredientById(id: Long): Ingredient {
-        TODO("Not yet implemented")
+        val ingredient = repository.findById(id).get()
+        repository.deleteById(id)
+        return ingredient
     }
 
     override fun findIngredientByName(name: String): Ingredient {

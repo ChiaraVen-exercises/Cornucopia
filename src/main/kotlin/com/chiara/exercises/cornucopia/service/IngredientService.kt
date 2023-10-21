@@ -8,7 +8,7 @@ interface IngredientService {
 
     fun findAllIngredients() : List<Ingredient>
 
-    fun saveIngredient(ingredient: Ingredient) : Long
+    fun saveIngredient(ingredient: Ingredient) : Long?
 
     fun updateIngredientById(id : Long, ingredient : Ingredient) : Ingredient
 
