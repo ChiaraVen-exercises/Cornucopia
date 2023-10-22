@@ -29,10 +29,10 @@ class FoodItem (
     @Column(name = "traceableCode")
     var traceableCode : Long,
 
-//    @ManyToOne(fetch = FetchType.LAZY)
-//    @JoinColumn(name = "lot_id", referencedColumnName = "id")
-//    @JsonIgnoreProperties("food_items")
-//    var lotId : FoodLot,
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "lot_id", referencedColumnName = "id")
+    @JsonIgnoreProperties("food_items")
+    var lotId : FoodLot,
 
     @ManyToMany(mappedBy = "foodItems")
     @JsonIgnoreProperties("food_items")
@@ -44,4 +44,8 @@ class FoodItem (
     @Column(name = "id")
     var id : Long? = null
 
+    // removed references to ingredients, see comment over the toString in the Ingredient class
+    override fun toString(): String {
+        return "FoodItem(description='$description', expirationDate=$expirationDate, category='$category', traceableCode=$traceableCode, id=$id)"
+    }
 }

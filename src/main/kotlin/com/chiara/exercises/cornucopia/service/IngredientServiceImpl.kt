@@ -16,10 +16,12 @@ class IngredientServiceImpl : IngredientService {
         this.repository = ingredientRepository
     }
 
+    @Transactional
     override fun findIngredientById(id: Long): Ingredient {
         return repository.findById(id).get()
     }
 
+    @Transactional
     override fun findAllIngredients(): List<Ingredient> {
         val ingredientIterable = repository.findAll()
         var ingredientList : List<Ingredient> = listOf()

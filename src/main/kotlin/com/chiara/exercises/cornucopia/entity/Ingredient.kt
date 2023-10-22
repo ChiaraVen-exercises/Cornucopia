@@ -64,7 +64,9 @@ class Ingredient(
         return result
     }
 
+    /* temporarily removed references to food_items: possibly because
+    of some missing code yet to be written, those references cause an app crash when used in the runner */
     override fun toString(): String {
-        return "Ingredient(name='$name', foodItems=$foodItems, id=$id)"
+        return "Ingredient(name='$name', id=$id)"
     }
 }
