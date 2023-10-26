@@ -14,5 +14,9 @@ interface IngredientService {
 
     fun deleteIngredientById(id : Long) : Ingredient
 
-    fun findIngredientByName(name : String) : Ingredient
+    fun findIngredientsWithNameContaining(name : String) : List<Ingredient>
+
+    fun findIngredientByExactName(name: String): Ingredient
+
+    fun findAllIngredientsSortAscending() : List<Ingredient>
 }

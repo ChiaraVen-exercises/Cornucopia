@@ -1,0 +1,2 @@
+- add logic to make it so that when you change an ingredient's name, its food_items associations are not touched.
+- custom message for NoSuchElementException.

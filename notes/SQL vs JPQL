@@ -1,0 +1,15 @@
+Java Persistence Query Language (JPQL) is very similar to the Structured Query Language (SQL),
+but has some crucial differences:
+for example, the queries are not made with the name of the tables and columns, but with their
+counterparts in the app (aka entity class names and field names).
+
+Example of how to write a custom query for a DAOImpl (in case you prefer using that over the
+Repository / Service pattern):
+
+
+fun findAllIngredients () {
+    var findAllIngredientsQuery : TypedQuery<Ingredient> =
+        entityManager.createQuery("FROM Ingredient", Ingredient.class)
+
+    return findAllIngredientQuery.getResultList()
+}
