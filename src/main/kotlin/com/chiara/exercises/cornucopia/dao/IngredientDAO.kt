@@ -8,4 +8,7 @@ interface IngredientDAO {
 
     fun findById (id : Long) : Ingredient
 
+    fun updateById(ingredient: Ingredient): Ingredient
+
+    fun deleteById(ingredient: Ingredient)
 }

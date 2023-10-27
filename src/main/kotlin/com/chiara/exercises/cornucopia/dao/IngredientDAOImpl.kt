@@ -25,6 +25,16 @@ class IngredientDAOImpl (
         return entityManager.find(Ingredient::class.java, id)
     }
 
+    @Transactional
+    override fun updateById (ingredient : Ingredient) : Ingredient {
+        return entityManager.merge(ingredient)
+    }
+
+    @Transactional
+    override fun deleteById(ingredient: Ingredient) {
+        entityManager.remove(ingredient)
+    }
+
     //    fun saveIngredients(){
 //
 //        println("Searching for Tsatziki...")

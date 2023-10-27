@@ -27,12 +27,13 @@ class SecondRunner : CommandLineRunner {
     @Transactional
     override fun run(vararg args: String?) {
         println("We serve cakes made of roses, fried paste of lilies...")
-        println("Finding ingredients with a name containing 'limone' and 'broccoli'...")
-        println(ingredientServiceImpl.findIngredientsWithNameContaining("limone"))
-        println(ingredientServiceImpl.findIngredientByExactName("broccoli"))
-        val list = ingredientServiceImpl.findAllIngredientsSortAscending()
-        for (el in list) {
-            println(el)
-        }
+        println(ingredientServiceImpl.saveIngredient(Ingredient("cauliflawa")))
+        val ident = ingredientServiceImpl.findIngredientByExactName("cauliflawa").id!!
+        println(ingredientServiceImpl.deleteIngredientById(53))
+
+//        val list = ingredientServiceImpl.findAllIngredientsSortAscending()
+//        for (el in list) {
+//            println(el)
+//        }
     }
 }
