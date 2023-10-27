@@ -15,7 +15,7 @@ class IngredientDAOImpl (
     @Transactional
     override fun save(ingredient: Ingredient) : Long? {
         entityManager.persist(ingredient)
-        var ingredientId = ingredient.id
+        val ingredientId = ingredient.id
         println(ingredientId)
         return ingredientId
     }
