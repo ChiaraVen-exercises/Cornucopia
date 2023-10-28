@@ -6,6 +6,9 @@ import jakarta.transaction.Transactional
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.stereotype.Repository
 
+/* nel DAOImpl si possono inserire anche query custom, con
+entityManager e il suo metodo createQuery, seguito da executeQuery ed executeUpdate */
+
 @Repository
 class IngredientDAOImpl (
     @Autowired
@@ -46,4 +49,3 @@ class IngredientDAOImpl (
 //    }
 
 }
-
