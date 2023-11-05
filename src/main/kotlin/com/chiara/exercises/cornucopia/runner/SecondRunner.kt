@@ -1,6 +1,5 @@
 package com.chiara.exercises.cornucopia.runner
 
-import com.chiara.exercises.cornucopia.entity.Ingredient
 import com.chiara.exercises.cornucopia.service.IngredientServiceImpl
 import jakarta.transaction.Transactional
 import org.springframework.beans.factory.annotation.Autowired
@@ -27,13 +26,10 @@ class SecondRunner : CommandLineRunner {
     @Transactional
     override fun run(vararg args: String?) {
         println("We serve cakes made of roses, fried paste of lilies...")
-        println(ingredientServiceImpl.saveIngredient(Ingredient("cauliflawa")))
-        val ident = ingredientServiceImpl.findIngredientByExactName("cauliflawa").id!!
-        println(ingredientServiceImpl.deleteIngredientById(53))
 
-//        val list = ingredientServiceImpl.findAllIngredientsSortAscending()
-//        for (el in list) {
-//            println(el)
-//        }
+        val list = ingredientServiceImpl.findAllIngredients()
+        for (el in list) {
+            println(el)
+        }
     }
 }

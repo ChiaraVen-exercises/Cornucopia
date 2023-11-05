@@ -1,0 +1,6 @@
+SQL scripts are very useful in production since they offer many possibilities for fine-tuning,
+and offer a much safer alternative than the customization provided, for example, by
+spring.jpa.hibernate.ddl properties (for example, if you set ddl-auto as "create" and you start your
+application, you end up deleting all your production DB data!)
+They are also useful for code review, and they can work well with schema migration tools like
+Liquibase and Flyway.

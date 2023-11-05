@@ -1,0 +1,16 @@
+MIME = Multipurpose Internet Mail-Extension
+
+MIME types represent the formats which a message returned from a server can assume.
+
+The client uses the MIME type to understand how to render the info received from the server.
+
+MIME types are written following the convention of type/subtype.
+
+Examples:
+
+- text/html
+- text/plain
+- application/json
+- application/xml
+
+all of these can be used with RESTful services.

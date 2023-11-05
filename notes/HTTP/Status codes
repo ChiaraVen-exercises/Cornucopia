@@ -1,0 +1,13 @@
+General info about status codes:
+
+100-199 : Informational
+200-299 : Successful
+300-399 : Redirectional
+400-499 : Client error
+500-599 : Server error
+
+Examples:
+
+401 Authentication required
+404 Not found
+500 Internal server error

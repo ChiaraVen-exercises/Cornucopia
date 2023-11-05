@@ -1,0 +1,21 @@
+An HTTP Request is composed by three main parts:
+
+- Request line
+    contains the HTTP command or method (GET, POST...)
+
+- Header variables
+    metadata (additional information) about this request
+
+- Body of the message
+    payload! Often in JSON
+
+
+
+Similarly, an HTTP Response is made of three parts:
+
+- Response line
+    contains server protocol (version of HTTP protocol used?) and status code (500, 400...)
+
+- Header variables
+
+- Message body

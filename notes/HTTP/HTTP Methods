@@ -1,0 +1,10 @@
+1) Get
+    Often used for read operations.
+
+2) Post
+    Often used to add new objects to a database.
+
+3) Put
+    Can be used to update an existing entity.
+
+4) Delete

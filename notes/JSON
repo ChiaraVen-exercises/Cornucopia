@@ -1,0 +1,16 @@
+JavaScript Object Notation
+
+File format which can be used with any programming language.
+It consists of data organized in name-value pairs, each separated from the next by a comma;
+the names are always wrapped in double quote signs, and the same goes for the values, except
+when in presence of some value types (numbers, booleans, null...).
+A colon is interposed between each name and its respective value.
+The list of name-value pairs is delimited by curly braces.
+
+Nested objects are delimited by an inner set of curly braces.
+Arrays are delimited by square braces.
+
+This notation can be used with any programming language.
+
+
+
