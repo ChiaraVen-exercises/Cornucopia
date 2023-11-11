@@ -1,0 +1,10 @@
+A path variable is a parameter contained inside an incoming request from the client
+(in the cases I encountered, it is included inside the path of the endpoint to which the request is sent).
+
+PathVariable is used inside controller endpoints to bind a path variable passed by the client to a parameter
+used in a method of the app.
+
+For an example of its usage, see "ingredient" in WelcomeController, and its path variable/parameter "id".
+
+Note: in order for the annotation to work, the path variable inside the @GetMapping address and the
+parameter used in the internal method have to share the same name.
