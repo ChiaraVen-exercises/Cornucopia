@@ -1,0 +1,3 @@
+The annotation @RequestMapping is used to map requests to specific classes or methods.
+A specific handler for the annotated class must be defined next to the annotation, using parentheses,
+in order to route the right requests to the correct class.

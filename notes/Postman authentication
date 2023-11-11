@@ -1,0 +1,7 @@
+While using Spring Security, you have to authenticate in order to receive successful responses from your app endpoints.
+To do so on Postman, you have to configure your authentication info:
+
+- inside your request, select the tab "Authorization"
+- select the type "Basic Auth"
+- insert the username and password you have configured for your app (see the spring.security properties in
+  your properties file)
