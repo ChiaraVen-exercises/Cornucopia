@@ -1,0 +1,11 @@
+JSON Data binding is the act of conversion from JSON to Java POJO and viceversa.
+It is also known as serialization/deserialization, marshalling/unmarshalling, and mapping.
+
+Jackson Project:
+similar to Spring (which uses it behind the scenes for data binding).
+It is used for mapping between POJOs and various formats (XML, JSON...)
+It automatically calls the necessary setters (JSON to POJO) and getters (POJO to JSON) for the conversion.
+
+When you create a REST controller, the data binding is done automatically behind the scenes!
+A JSON is returned from your controller to the client, and any JSONs sent by the client are turned into POJOs.
+This is thanks to the integration between Spring and Jackson.
