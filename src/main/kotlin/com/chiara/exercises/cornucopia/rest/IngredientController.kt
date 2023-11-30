@@ -1,6 +1,7 @@
 package com.chiara.exercises.cornucopia.rest
 
 import com.chiara.exercises.cornucopia.entity.Ingredient
+import com.chiara.exercises.cornucopia.error.exception.FailedSaveException
 import com.chiara.exercises.cornucopia.service.IngredientService
 import org.springframework.web.bind.annotation.GetMapping
 import org.springframework.web.bind.annotation.PathVariable
@@ -29,6 +30,10 @@ class IngredientController (
 
     @PostMapping("save")
     fun saveIngredient(@RequestBody ingredient: Ingredient) : Long {
-        return ingredientService.saveIngredient(ingredient)
+        return try {
+            ingredientService.saveIngredient(ingredient)!!
+        } catch (e: Exception) {
+            throw FailedSaveException(ingredient, e)
+        }
     }
 }
