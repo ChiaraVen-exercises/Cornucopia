@@ -14,7 +14,6 @@ import org.springframework.web.bind.annotation.RestController
 class WelcomeController (
     val ingredientService : IngredientService
 ){
-
     @GetMapping("/intro")
     fun welcome() = "Welcome to Cornucopia, banquet of dreams, delight of the aggrieved"
 
@@ -29,5 +28,4 @@ class WelcomeController (
         println(ingredient)
         ingredientService.updateIngredientById(id, ingredient)
     }
-
 }
