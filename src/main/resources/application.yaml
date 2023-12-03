@@ -1,0 +1,60 @@
+server:
+  port: 8190
+  servlet:
+    context-path: /cornucopia
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+
+  info:
+    env:
+      enabled: true
+
+#JPA | Hibernate
+
+spring:
+  jpa:
+    show-sql: true
+  datasource:
+    url: jdbc:mysql://localhost:3306/Cornucopia
+    username: mothadmin
+    password: plantlover
+  security:
+    user:
+      name: Odette
+      password: Renoir
+      roles: ADMIN, USER
+
+  application:
+    admin:
+      enabled: true
+
+
+#The following line allows you to create the database from scratch
+# (destroying previous data just before it) everytime you start the application:
+# spring.jpa.hibernate.ddl-auto=create
+
+# Displays only warnings and errors in logs (does not work correctly if the property 'debug' is set to true)
+logging:
+  level:
+    root: warn
+  # Configuration to display logs from database (first line after this one) and the values assigned in the
+  # process of their creation (second line)
+    org:
+      hibernate:
+        sql: debug
+      springframework:
+        security:
+          trace
+    orm:
+      jdbc:
+        bind: trace
+
+info:
+  app:
+    name: Cornucopia
+    description: Exercise app simulating a website for redistribution of surplus food, from donor businesses to charities or privates.
+    builtWith: Kotlin, MySQL, Spring JPA, Hibernate, Spring Security
