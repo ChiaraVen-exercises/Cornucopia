@@ -1,0 +1,4 @@
+Cannot send POST requests from postman:
+
+The Spring Security CRSF protection is the reason I cannot currently send POST requests from Postman, despite sending
+my user credentials (with ADMIN role) by Basic Authentication.

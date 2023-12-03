@@ -28,5 +28,5 @@ Classic example: attacks with the aim of subtracting money from the user, by mak
 their home banking profile.
 A precaution used sometimes by banks in order to avoid this scenario is requesting the TAN before each transaction.
 
-Note: The Spring Security CRSF protection is the reason I could not send POST requests from Postman, despite sending
-my user credentials (with ADMIN role) by Basic Authentication.
+Note: When using authentication by JWT, the CSRF protection needs to be disabled (it would be useless and probably
+interfere)
