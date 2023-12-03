@@ -1,0 +1,32 @@
+Cross Site Request Forgery (aka XRSF)
+
+It is a form of cyber attack; the victim is tricked into unknowingly executing actions which can compromise security
+(for example, they are manipulated into clicking on a button promising a prize, but the click executes a sign up
+on malicious sites with the victim's email).
+Spring Security prevents this by having CSRF protection by default; with it, the server requires the presence of a
+CRSF Token among the client's cookies. This token is initially created by the client at the beginning of a
+session (or once per each request), then sent to the client, which has to resend it with its requests in order for them
+to be validated; if the server does not receive the correct CRSF Token back, it automatically refuses the request
+(for example, with a 401 Unauthorized).
+
+The Spring Security CSRF protection checks only status-changing requests (POST, PUT, DELETE...) since these are
+normally used for XSRF attacks. If the attacker used a GET, for example in order to extract info, only the victim would
+see on their screen the result of accessing the info, leaving the attacker with empty hands.
+
+Conditions needed for a XRSF attack to work:
+- the victim is logged in on the site where the attacker wants to have an action executed
+- the attacker knows the URL which will cause its action to be executed
+- while being logged in on the target site, the user interacts with a malicious trigger set by the attacker
+  (for example, they click on a misleading link received in an email, or load a webpage that's been tampered with by
+  the attacker)
+- no requests for passwords or other validation checks are made after the status-changing request
+
+With a CRSF attack, the executer does as he pleases with the stolen credentials of the victim (so, as if the victim
+were executing the malicious action).
+
+Classic example: attacks with the aim of subtracting money from the user, by making them execute POST requests from
+their home banking profile.
+A precaution used sometimes by banks in order to avoid this scenario is requesting the TAN before each transaction.
+
+Note: The Spring Security CRSF protection is the reason I could not send POST requests from Postman, despite sending
+my user credentials (with ADMIN role) by Basic Authentication.
