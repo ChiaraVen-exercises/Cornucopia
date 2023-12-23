@@ -1,0 +1,3 @@
+Headers are apparently case-insensitive!
+
+I used Content-Type and Content-type interchangeably. Both seemed to work.
