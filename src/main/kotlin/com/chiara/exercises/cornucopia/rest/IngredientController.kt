@@ -3,13 +3,8 @@ package com.chiara.exercises.cornucopia.rest
 import com.chiara.exercises.cornucopia.entity.Ingredient
 import com.chiara.exercises.cornucopia.error.exception.ElementNotFoundException
 import com.chiara.exercises.cornucopia.error.exception.FailedSaveException
-import com.chiara.exercises.cornucopia.error.response.ElementNotFoundResponse
-import com.chiara.exercises.cornucopia.error.response.FailedSaveResponse
 import com.chiara.exercises.cornucopia.service.IngredientService
 import io.github.oshai.kotlinlogging.KotlinLogging
-import org.springframework.http.HttpStatus
-import org.springframework.http.ResponseEntity
-import org.springframework.web.bind.annotation.ExceptionHandler
 import org.springframework.web.bind.annotation.GetMapping
 import org.springframework.web.bind.annotation.PathVariable
 import org.springframework.web.bind.annotation.PostMapping
@@ -73,18 +68,4 @@ class IngredientController (
     @GetMapping("/get_all_sort_ascending")
     fun getAllIngredientsSortAscending() : List<Ingredient> =
         ingredientService.findAllIngredientsSortAscending()
-
-    @ExceptionHandler
-    fun handleElementNotFoundException(e : ElementNotFoundException): ResponseEntity<ElementNotFoundResponse> {
-        logger.info { e.message }
-        val response = ElementNotFoundResponse(System.currentTimeMillis(), e.message, HttpStatus.NOT_FOUND.value())
-        return ResponseEntity(response, HttpStatus.NOT_FOUND)
-    }
-
-    @ExceptionHandler
-    fun handleFailedSaveException(e : FailedSaveException) : ResponseEntity<FailedSaveResponse> {
-        logger.info { e.message }
-        val response = FailedSaveResponse(System.currentTimeMillis(), e.message, HttpStatus.INTERNAL_SERVER_ERROR.value())
-        return ResponseEntity(response, HttpStatus.INTERNAL_SERVER_ERROR)
-    }
 }

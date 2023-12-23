@@ -1,0 +1,3 @@
+The ControllerAdvice is a Spring annotation, put over a class in order to grant it pre-processing and post-processing
+functionalities over the content handled by all the controllers.
+In Cornucopia, I use it to extend the scope of an exception handling class over the whole of the controllers.
