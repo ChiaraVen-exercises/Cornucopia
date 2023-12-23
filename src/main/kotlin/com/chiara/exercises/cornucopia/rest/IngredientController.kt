@@ -22,7 +22,7 @@ class IngredientController (
     fun getAllIngredients() = ingredientService.findAllIngredients()
 
     @GetMapping("/{id}")
-    fun getIngredient(@PathVariable id : Long) = ingredientService.findIngredientById(id)
+    fun findIngredient(@PathVariable id : Long) = ingredientService.findIngredientById(id)
 
     @PostMapping("/update/{id}")
     fun updateIngredient(@PathVariable id : Long, @RequestBody ingredient: Ingredient) : Ingredient {
@@ -41,4 +41,16 @@ class IngredientController (
             throw FailedSaveException(ingredient, e)
         }
     }
+
+    @GetMapping("/find_name_containing/{name}")
+    fun findIngredientWithNameContaining(@PathVariable name: String) : List<Ingredient> =
+        ingredientService.findIngredientsWithNameContaining(name)
+
+    @GetMapping("/find_exact_name/{name}")
+    fun findIngredientByExactName(@PathVariable name: String) : Ingredient =
+        ingredientService.findIngredientByExactName(name)
+
+    @GetMapping("/get_all_sort_ascending")
+    fun getAllIngredientsSortAscending() : List<Ingredient> =
+        ingredientService.findAllIngredientsSortAscending()
 }
