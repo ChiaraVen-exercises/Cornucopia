@@ -6,6 +6,7 @@ import com.chiara.exercises.cornucopia.error.exception.FailedSaveException
 import com.chiara.exercises.cornucopia.error.response.ElementNotFoundErrorResponse
 import com.chiara.exercises.cornucopia.service.IngredientService
 import io.github.oshai.kotlinlogging.KotlinLogging
+import org.springframework.http.HttpStatus
 import org.springframework.web.bind.annotation.ExceptionHandler
 import org.springframework.web.bind.annotation.GetMapping
 import org.springframework.web.bind.annotation.PathVariable
@@ -64,6 +65,6 @@ class IngredientController (
     @ExceptionHandler
     fun handleException(e : ElementNotFoundException): ElementNotFoundErrorResponse {
         logger.info { e.message }
-        return ElementNotFoundErrorResponse(message = e.message, status =  200)
+        return ElementNotFoundErrorResponse(System.currentTimeMillis(), e.message, HttpStatus.NOT_FOUND.value())
     }
 }
