@@ -7,6 +7,7 @@ import com.chiara.exercises.cornucopia.error.response.ElementNotFoundErrorRespon
 import com.chiara.exercises.cornucopia.service.IngredientService
 import io.github.oshai.kotlinlogging.KotlinLogging
 import org.springframework.http.HttpStatus
+import org.springframework.http.ResponseEntity
 import org.springframework.web.bind.annotation.ExceptionHandler
 import org.springframework.web.bind.annotation.GetMapping
 import org.springframework.web.bind.annotation.PathVariable
@@ -63,8 +64,9 @@ class IngredientController (
         ingredientService.findAllIngredientsSortAscending()
 
     @ExceptionHandler
-    fun handleException(e : ElementNotFoundException): ElementNotFoundErrorResponse {
+    fun handleException(e : ElementNotFoundException): ResponseEntity<ElementNotFoundErrorResponse> {
         logger.info { e.message }
-        return ElementNotFoundErrorResponse(System.currentTimeMillis(), e.message, HttpStatus.NOT_FOUND.value())
+        val response = ElementNotFoundErrorResponse(System.currentTimeMillis(), e.message, HttpStatus.NOT_FOUND.value())
+        return ResponseEntity(response, HttpStatus.NOT_FOUND)
     }
 }
