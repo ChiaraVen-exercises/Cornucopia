@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.ExceptionHandler
 private val logger = KotlinLogging.logger {}
 
 @ControllerAdvice
-class ExceptionHandler {
+class RestExceptionHandler {
     @ExceptionHandler
     fun handleElementNotFoundException(e : ElementNotFoundException): ResponseEntity<ElementNotFoundResponse> {
         logger.info { e.message }
