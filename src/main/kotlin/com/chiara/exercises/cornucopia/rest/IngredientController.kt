@@ -3,7 +3,8 @@ package com.chiara.exercises.cornucopia.rest
 import com.chiara.exercises.cornucopia.entity.Ingredient
 import com.chiara.exercises.cornucopia.error.exception.ElementNotFoundException
 import com.chiara.exercises.cornucopia.error.exception.FailedSaveException
-import com.chiara.exercises.cornucopia.error.response.ElementNotFoundErrorResponse
+import com.chiara.exercises.cornucopia.error.response.ElementNotFoundResponse
+import com.chiara.exercises.cornucopia.error.response.FailedSaveResponse
 import com.chiara.exercises.cornucopia.service.IngredientService
 import io.github.oshai.kotlinlogging.KotlinLogging
 import org.springframework.http.HttpStatus
@@ -27,14 +28,24 @@ class IngredientController (
     fun getAllIngredients() = ingredientService.findAllIngredients()
 
     @GetMapping("/{id}")
-    fun findIngredient(@PathVariable id : Long) = ingredientService.findIngredientById(id)
+    fun findIngredient(@PathVariable id : Long) {
+        try {
+            ingredientService.findIngredientById(id)
+        } catch (e : NoSuchElementException) {
+            throw ElementNotFoundException("ingredient", "id", id)
+        }
+    }
 
     @PostMapping("/update/{id}")
     fun updateIngredient(@PathVariable id : Long, @RequestBody ingredient: Ingredient) : Ingredient {
-        logger.info { "accessed UPDATE" }
-        println(ingredient)
-        ingredientService.updateIngredientById(id, ingredient)
-        return ingredient
+        return try {
+            logger.info { "accessed UPDATE" }
+            println(ingredient)
+            ingredientService.updateIngredientById(id, ingredient)
+            ingredient
+        } catch (e : NoSuchElementException) {
+            throw ElementNotFoundException("ingredient", "id", id)
+        }
     }
 
     @PostMapping("/save")
@@ -64,9 +75,16 @@ class IngredientController (
         ingredientService.findAllIngredientsSortAscending()
 
     @ExceptionHandler
-    fun handleException(e : ElementNotFoundException): ResponseEntity<ElementNotFoundErrorResponse> {
+    fun handleElementNotFoundException(e : ElementNotFoundException): ResponseEntity<ElementNotFoundResponse> {
         logger.info { e.message }
-        val response = ElementNotFoundErrorResponse(System.currentTimeMillis(), e.message, HttpStatus.NOT_FOUND.value())
+        val response = ElementNotFoundResponse(System.currentTimeMillis(), e.message, HttpStatus.NOT_FOUND.value())
         return ResponseEntity(response, HttpStatus.NOT_FOUND)
+    }
+
+    @ExceptionHandler
+    fun handleFailedSaveException(e : FailedSaveException) : ResponseEntity<FailedSaveResponse> {
+        logger.info { e.message }
+        val response = FailedSaveResponse(System.currentTimeMillis(), e.message, HttpStatus.INTERNAL_SERVER_ERROR.value())
+        return ResponseEntity(response, HttpStatus.INTERNAL_SERVER_ERROR)
     }
 }
