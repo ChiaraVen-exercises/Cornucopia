@@ -1,9 +1,12 @@
 package com.chiara.exercises.cornucopia.rest
 
 import com.chiara.exercises.cornucopia.entity.Ingredient
+import com.chiara.exercises.cornucopia.error.exception.ElementNotFoundException
 import com.chiara.exercises.cornucopia.error.exception.FailedSaveException
+import com.chiara.exercises.cornucopia.error.response.ElementNotFoundErrorResponse
 import com.chiara.exercises.cornucopia.service.IngredientService
 import io.github.oshai.kotlinlogging.KotlinLogging
+import org.springframework.web.bind.annotation.ExceptionHandler
 import org.springframework.web.bind.annotation.GetMapping
 import org.springframework.web.bind.annotation.PathVariable
 import org.springframework.web.bind.annotation.PostMapping
@@ -48,9 +51,19 @@ class IngredientController (
 
     @GetMapping("/find_exact_name/{name}")
     fun findIngredientByExactName(@PathVariable name: String) : Ingredient =
-        ingredientService.findIngredientByExactName(name)
+        try {
+            ingredientService.findIngredientByExactName(name)
+        } catch (e : NoSuchElementException) {
+            throw ElementNotFoundException("ingredient", "name", name)
+        }
 
     @GetMapping("/get_all_sort_ascending")
     fun getAllIngredientsSortAscending() : List<Ingredient> =
         ingredientService.findAllIngredientsSortAscending()
+
+    @ExceptionHandler
+    fun handleException(e : ElementNotFoundException): ElementNotFoundErrorResponse {
+        logger.info { e.message }
+        return ElementNotFoundErrorResponse(message = e.message, status =  200)
+    }
 }
