@@ -27,6 +27,12 @@ spring:
       name: Odette
       password: Renoir
       roles: ADMIN, USER
+  data:
+    rest:
+      default-page-size: 2000
+      max-page-size: 2000
+#     if you want to assign a base URL to your Data REST auto-generated controllers, use this:
+#     base-path: /lovely-purple-bar-eyes
 
   application:
     admin:
