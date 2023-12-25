@@ -21,3 +21,5 @@ Spring Data REST's sorting functionalities are very useful!
 If you wish to sort a list of elements in a response, simply specify the criteria in the url. Example:
 
 https://localhost:8080/cornucopia/ingredients?sort=name,desc
+https://localhost:8080/cornucopia/employees?sort=surname,name,asc -> first sorts by name, then uses if the name is
+the same. Order: ascending (asc is not needed, since it is the default)
