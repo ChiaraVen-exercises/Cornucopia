@@ -26,10 +26,5 @@ class SecondRunner : CommandLineRunner {
     @Transactional
     override fun run(vararg args: String?) {
         println("We serve cakes made of roses, fried paste of lilies...")
-
-        val list = ingredientServiceImpl.findAllIngredients()
-        for (el in list) {
-            println(el)
-        }
     }
 }

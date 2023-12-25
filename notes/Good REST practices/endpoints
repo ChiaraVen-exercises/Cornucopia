@@ -1,0 +1,23 @@
+In your controllers, it is considered good practice to use the plural of the related entity as request mapping
+(example: IngredientController -> ingredients).
+The endpoints should not contain the verb related to their function in their name (example, "ingredients/delete");
+they should be differentiated by the HTTP method used, as much as possible.
+
+Example:
+
+delete ingredient:
+endpoint with @DeleteMapping and name "ingredient/{id}"
+
+save ingredient
+endpoint with @PutMapping* or @PostMapping*, and same name as the endpoint above
+
+* The PUT method should be used if you already know the URL which will be assigned to the resource you are creating,
+and used for its retrieval or updating.
+For example, you could use a PUT if you need to save details about a flight, and the primary key (the flight code) is
+provided along with the object (the first in the URL, the second in the save request body).
+In the case of Cornucopia, I prefer using a POST for the save endpoint, because I do not know the primary key of the
+entity before it is saved.
+
+PUT can be used for updating a resource, since you already know its primary key.
+
+:id = {id} in endpoint name.

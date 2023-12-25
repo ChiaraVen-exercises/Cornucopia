@@ -1,0 +1,15 @@
+Spring Data REST and its power in vanquishing the need for boilerplate code!
+
+Spring Data REST is a dependency you can add to your POM or Gradle build file.
+It allows you to skip the creation of controller and service classes, by exposing default endpoints
+for CRUD methods of any repository in your project (they have to implement the JpaRepository or the
+CrudRepository interface).
+
+You can extend its functionalities with different endpoints by still keeping service and controller classes,
+which can be wholly dedicated to the custom endpoints.
+If I understood correctly, the controller with the same default address as the default controller is distinct from it;
+for example, in Cornucopia, I have an IngredientController with some custom methods, which only APPEARS to be an
+extension of the default IngredientController since they share the same mapping.
+
+The provided default endpoints follow certain conventions on the matter of name and method:
+see the Net if you forget them!
