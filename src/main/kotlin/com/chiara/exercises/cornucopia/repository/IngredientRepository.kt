@@ -17,4 +17,11 @@ interface IngredientRepository : CrudRepository<Ingredient, Long> {
     @Query("SELECT * FROM ingredients order by name", nativeQuery = true)
     fun getAllIngredientsSortedByNameAsc() : Iterable<Ingredient>
 
+    /* A particular CRUD method can be disabled for a given entity in the following way...
+    Actually, it should. Not working now, it seems...
+     */
+//    @Override
+//    @RestResource(exported = false)
+//    override fun deleteById(id : Long)
+
 }

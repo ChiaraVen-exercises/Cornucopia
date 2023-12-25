@@ -8,7 +8,16 @@ import org.springframework.web.bind.annotation.PathVariable
 import org.springframework.web.bind.annotation.RequestMapping
 import org.springframework.web.bind.annotation.RestController
 
-@RequestMapping(value = ["/ingredients"], produces = ["application/hal+json"])
+@RequestMapping(
+    value = ["/ingredients"]
+    /* added 'produces' to use the same response format as the
+    Spring Data REST default (hidden) controller.
+    Currently not working.
+    */
+    // ,produces = [MediaTypes.HAL_JSON_VALUE]
+)
+// imported in an attempt to make the above 'produces' work. currently not working
+// @EnableHypermediaSupport(type = [ EnableHypermediaSupport.HypermediaType.HAL ])
 @RestController
 class IngredientController(
     val ingredientService: IngredientService
