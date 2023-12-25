@@ -4,68 +4,70 @@ import com.chiara.exercises.cornucopia.entity.Ingredient
 import com.chiara.exercises.cornucopia.error.exception.ElementNotFoundException
 import com.chiara.exercises.cornucopia.error.exception.FailedSaveException
 import com.chiara.exercises.cornucopia.service.IngredientService
-import io.github.oshai.kotlinlogging.KotlinLogging
+import org.springframework.web.bind.annotation.DeleteMapping
 import org.springframework.web.bind.annotation.GetMapping
 import org.springframework.web.bind.annotation.PathVariable
 import org.springframework.web.bind.annotation.PostMapping
+import org.springframework.web.bind.annotation.PutMapping
 import org.springframework.web.bind.annotation.RequestBody
 import org.springframework.web.bind.annotation.RequestMapping
 import org.springframework.web.bind.annotation.RestController
 
-private val logger = KotlinLogging.logger {}
-
-@RequestMapping("/ingredient")
+@RequestMapping("/ingredients")
 @RestController
-class IngredientController (
-    val ingredientService : IngredientService
-){
-    @GetMapping("/all")
+class IngredientController(
+    val ingredientService: IngredientService
+) {
+    @GetMapping("")
     fun getAllIngredients() = ingredientService.findAllIngredients()
 
     @GetMapping("/{id}")
-    fun findIngredient(@PathVariable id : Long) {
+    fun findIngredient(@PathVariable id: Long) =
         try {
             ingredientService.findIngredientById(id)
-        } catch (e : NoSuchElementException) {
+        } catch (e: NoSuchElementException) {
             throw ElementNotFoundException("ingredient", "id", id)
         }
-    }
 
-    @PostMapping("/update/{id}")
-    fun updateIngredient(@PathVariable id : Long, @RequestBody ingredient: Ingredient) : Ingredient {
-        return try {
-            logger.info { "accessed UPDATE" }
+    @PutMapping("/{id}")
+    fun updateIngredient(@PathVariable id: Long, @RequestBody ingredient: Ingredient): Ingredient =
+        try {
             println(ingredient)
             ingredientService.updateIngredientById(id, ingredient)
             ingredient
-        } catch (e : NoSuchElementException) {
+        } catch (e: NoSuchElementException) {
             throw ElementNotFoundException("ingredient", "id", id)
         }
-    }
 
-    @PostMapping("/save")
-    fun saveIngredient(@RequestBody ingredient: Ingredient) : Long {
-        logger.info { "accessed SAVE" }
-        return try {
+    @PostMapping("")
+    fun saveIngredient(@RequestBody ingredient: Ingredient): Long =
+        try {
             ingredientService.saveIngredient(ingredient)!!
         } catch (e: Exception) {
             throw FailedSaveException(ingredient, e)
         }
-    }
 
-    @GetMapping("/find_name_containing/{name}")
-    fun findIngredientWithNameContaining(@PathVariable name: String) : List<Ingredient> =
+    @GetMapping("/name_containing/{name}")
+    fun findIngredientWithNameContaining(@PathVariable name: String): List<Ingredient> =
         ingredientService.findIngredientsWithNameContaining(name)
 
-    @GetMapping("/find_exact_name/{name}")
-    fun findIngredientByExactName(@PathVariable name: String) : Ingredient =
+    @GetMapping("/exact_name/{name}")
+    fun findIngredientByExactName(@PathVariable name: String): Ingredient =
         try {
             ingredientService.findIngredientByExactName(name)
-        } catch (e : NoSuchElementException) {
+        } catch (e: NoSuchElementException) {
             throw ElementNotFoundException("ingredient", "name", name)
         }
 
-    @GetMapping("/get_all_sort_ascending")
-    fun getAllIngredientsSortAscending() : List<Ingredient> =
+    @GetMapping("/sort_ascending")
+    fun getAllIngredientsSortAscending(): List<Ingredient> =
         ingredientService.findAllIngredientsSortAscending()
+
+    @DeleteMapping("/{id}")
+    fun deleteIngredient(@PathVariable id: Long) =
+        try {
+            ingredientService.deleteIngredientById(id)
+        } catch (e: NoSuchElementException) {
+            throw ElementNotFoundException("ingredient", "id", id)
+        }
 }

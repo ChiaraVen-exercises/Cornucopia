@@ -9,5 +9,5 @@ import org.springframework.web.bind.annotation.RestController
 class WelcomeController {
 
     @GetMapping("/intro")
-    fun welcome() = "Welcome to Cornucopia, banquet of dreams, delight of the aggrieved"
+    fun welcome() = "Welcome to Cornucopia, banquet of dreams..."
 }
