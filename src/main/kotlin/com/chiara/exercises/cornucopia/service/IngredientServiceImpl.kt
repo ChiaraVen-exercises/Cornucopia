@@ -18,42 +18,6 @@ class IngredientServiceImpl : IngredientService {
     }
 
     @Transactional
-    override fun findIngredientById(id: Long): Ingredient {
-        return repository.findById(id).get()
-    }
-
-    @Transactional
-    override fun findAllIngredients(): List<Ingredient> {
-        val ingredientIterable = repository.findAll()
-        var ingredientList : List<Ingredient> = listOf()
-        for (el in ingredientIterable) {
-            ingredientList += el
-        }
-        return ingredientList
-    }
-
-    @Transactional
-    override fun saveIngredient(ingredient: Ingredient): Long? {
-        return repository.save(ingredient).id
-    }
-
-    @Transactional
-    override fun updateIngredientById(id: Long, ingredient: Ingredient): Ingredient {
-        val updatedIngredient = repository.findById(id).get()
-            updatedIngredient.name = ingredient.name
-            updatedIngredient.foodItems = ingredient.foodItems
-            repository.save(updatedIngredient)
-        return updatedIngredient
-    }
-
-    @Transactional
-    override fun deleteIngredientById(id: Long): Ingredient {
-        val ingredient = repository.findById(id).get()
-        repository.deleteById(id)
-        return ingredient
-    }
-
-    @Transactional
     override fun findIngredientsWithNameContaining(name: String) : List<Ingredient> {
         return repository.getIngredientsWithNameContaining(name).toList()
     }
