@@ -1,0 +1,23 @@
+The JpaRepository extends the CrudRepository, offering some additional functionalities related to pagination and
+sorting.
+
+If you request all elements of a given entity from a controller (example: "get all employees") while using
+JpaRepository, the response will contain only some of the elements: ordinarily, the first 20, as a default setting.
+
+In order to receive another batch of elements (example, the next 20), you need to use the page as a query parameter in
+the url:
+
+https://localhost:8080/my-wondrous-app/plonts -> first 20 elements
+https://localhost:8080/my-wondrous-app/plonts?page=0 -> same as above
+https://localhost:8080/my-wondrous-app/plonts?page=1 -> next 20 elements
+
+In order to change this, if you use the JpaRepository in combination with Data REST, you can use the following
+properties to override the defaults:
+
+spring.data.rest.default-page-size
+spring.data.rest.max-page-size
+
+Spring Data REST's sorting functionalities are very useful!
+If you wish to sort a list of elements in a response, simply specify the criteria in the url. Example:
+
+https://localhost:8080/cornucopia/ingredients?sort=name,desc
