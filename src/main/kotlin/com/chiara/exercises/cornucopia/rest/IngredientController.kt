@@ -33,8 +33,4 @@ class IngredientController(
         } catch (e: NoSuchElementException) {
             throw ElementNotFoundException("ingredient", "name", name)
         }
-
-    @GetMapping("/sort_ascending")
-    fun getAllIngredientsSortAscending(): List<Ingredient> =
-        ingredientService.findAllIngredientsSortAscending()
 }

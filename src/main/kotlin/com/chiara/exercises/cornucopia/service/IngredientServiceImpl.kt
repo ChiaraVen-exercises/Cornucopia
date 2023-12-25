@@ -34,9 +34,4 @@ class IngredientServiceImpl : IngredientService {
         }
         return ingredientsWithExactName[0]
     }
-
-    @Transactional
-    override fun findAllIngredientsSortAscending(): List<Ingredient> {
-        return repository.getAllIngredientsSortedByNameAsc().toList()
-    }
 }

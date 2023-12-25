@@ -7,6 +7,4 @@ interface IngredientService {
     fun findIngredientsWithNameContaining(name : String) : List<Ingredient>
 
     fun findIngredientByExactName(name: String): Ingredient
-
-    fun findAllIngredientsSortAscending() : List<Ingredient>
 }
