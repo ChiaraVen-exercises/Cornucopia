@@ -17,3 +17,7 @@ For example, you could use a PUT if you need to save details about a flight, and
 provided along with the object (the first in the URL, the second in the save request body).
 In the case of Cornucopia, I prefer using a POST for the save endpoint, because I do not know the primary key of the
 entity before it is saved.
+
+PUT can be used for updating a resource, since you already know its primary key.
+
+:id = {id} in endpoint name.
