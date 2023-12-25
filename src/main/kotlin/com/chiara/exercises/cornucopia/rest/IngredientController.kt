@@ -8,7 +8,7 @@ import org.springframework.web.bind.annotation.PathVariable
 import org.springframework.web.bind.annotation.RequestMapping
 import org.springframework.web.bind.annotation.RestController
 
-@RequestMapping("/ingredients")
+@RequestMapping(value = ["/ingredients"], produces = ["application/hal+json"])
 @RestController
 class IngredientController(
     val ingredientService: IngredientService
